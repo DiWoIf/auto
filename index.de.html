@@ -1,216 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auto•Meister — Online Terminbuchung</title>
-  <meta name="description" content="Online-Terminbuchung für Ihre Autowerkstatt. Ölwechsel, Diagnose, Bremsen, Reifenwechsel. Mo–Sa 09:00–18:00" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <div>
-      <a class="logo-name" href="index.de.html">Auto<span>•</span>Meister</a>
-      <div class="logo-tagline">Autowerkstatt</div>
-    </div>
-  </div>
-
-  <div class="lang-switcher">
-    <a href="index.html">UA</a>
-    <a href="index.de.html" class="active">DE</a>
-  </div>
-
-  <div class="header-contact">
-    <div>Mo–Sa, 09:00–18:00</div>
-    <a href="tel:+380661234567">+38 (066) 123-45-67</a>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1 class="hero-headline">
-    Termin<br>buchen
-  </h1>
-  <div class="hero-meta">
-    <div class="hero-badge">Online-Buchung</div>
-    <div class="hero-sub">Bestätigung per E-Mail</div>
-  </div>
-</section>
-
-<!-- WIZARD STEPS -->
-<nav class="wizard-steps" aria-label="Buchungsschritte">
-  <div class="step active" id="nav-step-1">
-    <div class="step-num">1</div>
-    <span class="step-label">Leistung</span>
-  </div>
-  <div class="step" id="nav-step-2">
-    <div class="step-num">2</div>
-    <span class="step-label">Datum & Zeit</span>
-  </div>
-  <div class="step" id="nav-step-3">
-    <div class="step-num">3</div>
-    <span class="step-label">Ihre Daten</span>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<main class="main">
-
-  <!-- STEP 1 -->
-  <div class="wizard-panel" id="step-1">
-    <div class="section-label">Leistung wählen</div>
-    <div class="services-grid" id="services-grid"></div>
-    <div class="btn-row" style="border-top:none; justify-content:flex-end; margin-top:24px;">
-      <button class="btn-next" id="btn-next-1">Weiter</button>
-    </div>
-  </div>
-
-  <!-- STEP 2 -->
-  <div class="wizard-panel hidden" id="step-2">
-    <div class="section-label">Datum wählen</div>
-    <div class="calendar-section">
-      <div id="calendar-container"></div>
-    </div>
-    <div class="section-label" style="margin-top:32px;">Verfügbare Zeiten</div>
-    <div id="time-slots"></div>
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-2">Zurück</button>
-      <button class="btn-next" id="btn-next-2">Weiter</button>
-    </div>
-  </div>
-
-  <!-- STEP 3 -->
-  <div class="wizard-panel hidden" id="step-3">
-    <div class="section-label">Ihre Daten</div>
-
-    <div id="booking-summary" class="booking-summary"></div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-name">Name *</label>
-      <input class="form-input" id="field-name" type="text" placeholder="Max Mustermann" autocomplete="name" />
-      <div class="form-error" id="error-name"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-phone">Telefon *</label>
-      <input class="form-input" id="field-phone" type="tel" placeholder="+49 ___________" autocomplete="tel" />
-      <div class="form-error" id="error-phone"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-email">E-Mail <span style="color:var(--text-muted);font-size:11px;">(optional)</span></label>
-      <input class="form-input" id="field-email" type="email" placeholder="max@gmail.com" autocomplete="email" />
-      <div class="form-error" id="error-email"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-comment">Fahrzeug / Anmerkung</label>
-      <input class="form-input" id="field-comment" type="text" placeholder="VW Golf 2020, Benzin" />
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-3">Zurück</button>
-      <button class="btn-next" id="btn-submit">Termin bestätigen</button>
-    </div>
-  </div>
-
-  <!-- SUCCESS -->
-  <div class="wizard-panel hidden" id="step-success">
-    <div class="success-screen">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6"/></svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto•Meister — Online Terminbuchung</title>
+    <meta
+      name="description"
+      content="Online-Terminbuchung für Ihre Autowerkstatt. Ölwechsel, Diagnose, Bremsen, Reifenwechsel. Mo–Sa 09:00–18:00"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <div>
+          <a class="logo-name" href="index.de.html"
+            >Auto<span>•</span>Meister</a
+          >
+          <div class="logo-tagline">Autowerkstatt</div>
+        </div>
       </div>
-      <h2 class="success-title">Termin gebucht!</h2>
-      <p class="success-text">
-        Ihr Termin wurde erfolgreich eingetragen.<br>
-        Eine Bestätigung wurde an Ihre E-Mail gesendet.
-      </p>
-      <div class="success-detail booking-summary"></div>
-      <a class="btn-next hidden cal-link" href="#" target="_blank" rel="noopener"
-         style="display:inline-flex; margin-bottom:16px; text-decoration:none;">
-        In Cal.com öffnen
-      </a>
-      <br>
-      <button class="btn-restart" id="btn-restart">Neuen Termin buchen</button>
-    </div>
-  </div>
 
-</main>
+      <div class="lang-switcher">
+        <a href="index.html">UA</a>
+        <a href="index.de.html" class="active">DE</a>
+      </div>
 
-<!-- DATA: Services (German) -->
-<script>
-window.SERVICES = [
-  {
-    id: 'oil',
-    name: 'Ölwechsel & Filter',
-    desc: 'Motoröl + Öl-, Luft- und Innenraumfilter. Express-Service ohne Wartezeit.',
-    duration: '30 Min.',
-    price: '89 €',
-  },
-  {
-    id: 'suspension',
-    name: 'Fahrwerksdiagnose',
-    desc: 'Vollständige Prüfung von Federung, Lenkung und Bremssystem auf der Hebebühne.',
-    duration: '45 Min.',
-    price: '49 €',
-  },
-  {
-    id: 'diagnostic',
-    name: 'Fahrzeugdiagnose',
-    desc: 'Auslessung aller Steuergeräte, Fehlerauswertung mit verständlicher Erklärung.',
-    duration: '30 Min.',
-    price: '39 €',
-  },
-  {
-    id: 'brakes',
-    name: 'Bremsbeläge wechseln',
-    desc: 'Vorne oder hinten. Inkl. Bremsen entlüften und Bremssattel prüfen.',
-    duration: '60 Min.',
-    price: '129 €',
-  },
-  {
-    id: 'tires',
-    name: 'Saisonaler Reifenwechsel',
-    desc: 'Montage, Auswuchten und Reifendruckkontrolle. Einlagerung optional.',
-    duration: '40 Min.',
-    price: '69 €',
-  },
-  {
-    id: 'maintenance',
-    name: 'Inspektion nach Wartungsplan',
-    desc: 'Vollständige Fahrzeugwartung gemäß Herstellervorgaben Ihres Fahrzeugs.',
-    duration: '90 Min.',
-    price: 'ab 249 €',
-  },
-];
+      <div class="header-contact">
+        <div>Mo–Sa, 09:00–18:00</div>
+        <a href="tel:+380661234567">+38 (066) 123-45-67</a>
+      </div>
+    </header>
 
-window.STRINGS = {
-  selectService: 'Bitte wählen Sie eine Leistung',
-  selectDateTime: 'Bitte wählen Sie Datum und Uhrzeit',
-  selectDateFirst: 'Bitte zuerst ein Datum wählen',
-  yourBooking: 'Ihre Buchung',
-  service: 'Leistung',
-  dateLabel: 'Datum',
-  timeLabel: 'Uhrzeit',
-  duration: 'Dauer',
-  price: 'Preis',
-  nameLabel: 'Name',
-  sending: 'Wird gesendet',
-  submit: 'Termin bestätigen',
-  errorRequired: 'Pflichtfeld',
-  errorPhone: 'Bitte gültige Nummer eingeben',
-  errorEmail: 'Ungültige E-Mail-Adresse',
-  errorGeneral: 'Fehler. Bitte erneut versuchen.',
-  months: ['Januar','Februar','März','April','Mai','Juni',
-           'Juli','August','September','Oktober','November','Dezember'],
-  days: ['Mo','Di','Mi','Do','Fr','Sa','So'],
-};
-</script>
-<script src="js/main.js"></script>
-</body>
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="hero-headline">Termin<br />buchen</h1>
+      <div class="hero-meta">
+        <div class="hero-badge">Online-Buchung</div>
+        <div class="hero-sub">Bestätigung per E-Mail</div>
+      </div>
+    </section>
+
+    <!-- WIZARD STEPS -->
+    <nav class="wizard-steps" aria-label="Buchungsschritte">
+      <div class="step active" id="nav-step-1">
+        <div class="step-num">1</div>
+        <span class="step-label">Leistung</span>
+      </div>
+      <div class="step" id="nav-step-2">
+        <div class="step-num">2</div>
+        <span class="step-label">Datum & Zeit</span>
+      </div>
+      <div class="step" id="nav-step-3">
+        <div class="step-num">3</div>
+        <span class="step-label">Ihre Daten</span>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- STEP 1 -->
+      <div class="wizard-panel" id="step-1">
+        <div class="section-label">Leistung wählen</div>
+        <div class="services-grid" id="services-grid"></div>
+        <div
+          class="btn-row"
+          style="border-top: none; justify-content: flex-end; margin-top: 24px"
+        >
+          <button class="btn-next" id="btn-next-1">Weiter</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="wizard-panel hidden" id="step-2">
+        <div class="section-label">Datum wählen</div>
+        <div class="calendar-section">
+          <div id="calendar-container"></div>
+        </div>
+        <div class="section-label" style="margin-top: 32px">
+          Verfügbare Zeiten
+        </div>
+        <div id="time-slots"></div>
+        <div class="btn-row">
+          <button class="btn-back" id="btn-back-2">Zurück</button>
+          <button class="btn-next" id="btn-next-2">Weiter</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="wizard-panel hidden" id="step-3">
+        <div class="section-label">Ihre Daten</div>
+
+        <div id="booking-summary" class="booking-summary"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-name">Name *</label>
+          <input
+            class="form-input"
+            id="field-name"
+            type="text"
+            placeholder="Max Mustermann"
+            autocomplete="name"
+          />
+          <div class="form-error" id="error-name"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-phone">Telefon *</label>
+          <input
+            class="form-input"
+            id="field-phone"
+            type="tel"
+            placeholder="+49 ___________"
+            autocomplete="tel"
+          />
+          <div class="form-error" id="error-phone"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-email"
+            >E-Mail
+            <span style="color: var(--text-muted); font-size: 11px"
+              >(optional)</span
+            ></label
+          >
+          <input
+            class="form-input"
+            id="field-email"
+            type="email"
+            placeholder="max@gmail.com"
+            autocomplete="email"
+          />
+          <div class="form-error" id="error-email"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-comment"
+            >Fahrzeug / Anmerkung</label
+          >
+          <input
+            class="form-input"
+            id="field-comment"
+            type="text"
+            placeholder="VW Golf 2020, Benzin"
+          />
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" id="btn-back-3">Zurück</button>
+          <button class="btn-next" id="btn-submit">Termin bestätigen</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="wizard-panel hidden" id="step-success">
+        <div class="success-screen">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6" /></svg>
+          </div>
+          <h2 class="success-title">Termin gebucht!</h2>
+          <p class="success-text">
+            Ihr Termin wurde erfolgreich eingetragen.<br />
+            Eine Bestätigung wurde an Ihre E-Mail gesendet.
+          </p>
+          <div class="success-detail booking-summary"></div>
+          <button class="btn-restart" id="btn-restart">
+            Neuen Termin buchen
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- DATA: Services (German) -->
+    <script>
+      window.SERVICES = [
+        {
+          id: "oil",
+          name: "Ölwechsel & Filter",
+          desc: "Motoröl + Öl-, Luft- und Innenraumfilter. Express-Service ohne Wartezeit.",
+          duration: "30 Min.",
+          price: "89 €",
+        },
+        {
+          id: "suspension",
+          name: "Fahrwerksdiagnose",
+          desc: "Vollständige Prüfung von Federung, Lenkung und Bremssystem auf der Hebebühne.",
+          duration: "45 Min.",
+          price: "49 €",
+        },
+        {
+          id: "diagnostic",
+          name: "Fahrzeugdiagnose",
+          desc: "Auslessung aller Steuergeräte, Fehlerauswertung mit verständlicher Erklärung.",
+          duration: "30 Min.",
+          price: "39 €",
+        },
+        {
+          id: "brakes",
+          name: "Bremsbeläge wechseln",
+          desc: "Vorne oder hinten. Inkl. Bremsen entlüften und Bremssattel prüfen.",
+          duration: "60 Min.",
+          price: "129 €",
+        },
+        {
+          id: "tires",
+          name: "Saisonaler Reifenwechsel",
+          desc: "Montage, Auswuchten und Reifendruckkontrolle. Einlagerung optional.",
+          duration: "40 Min.",
+          price: "69 €",
+        },
+        {
+          id: "maintenance",
+          name: "Inspektion nach Wartungsplan",
+          desc: "Vollständige Fahrzeugwartung gemäß Herstellervorgaben Ihres Fahrzeugs.",
+          duration: "90 Min.",
+          price: "ab 249 €",
+        },
+      ];
+
+      window.STRINGS = {
+        selectService: "Bitte wählen Sie eine Leistung",
+        selectDateTime: "Bitte wählen Sie Datum und Uhrzeit",
+        selectDateFirst: "Bitte zuerst ein Datum wählen",
+        yourBooking: "Ihre Buchung",
+        service: "Leistung",
+        dateLabel: "Datum",
+        timeLabel: "Uhrzeit",
+        duration: "Dauer",
+        price: "Preis",
+        nameLabel: "Name",
+        sending: "Wird gesendet",
+        submit: "Termin bestätigen",
+        errorRequired: "Pflichtfeld",
+        errorPhone: "Bitte gültige Nummer eingeben",
+        errorEmail: "Ungültige E-Mail-Adresse",
+        errorGeneral: "Fehler. Bitte erneut versuchen.",
+        months: [
+          "Januar",
+          "Februar",
+          "März",
+          "April",
+          "Mai",
+          "Juni",
+          "Juli",
+          "August",
+          "September",
+          "Oktober",
+          "November",
+          "Dezember",
+        ],
+        days: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+      };
+    </script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

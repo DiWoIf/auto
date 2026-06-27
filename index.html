@@ -1,216 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Авто•Майстер — Запис на сервіс</title>
-  <meta name="description" content="Онлайн-запис на автосервіс. Заміна масла, діагностика, гальма, шини. Пн–Сб 09:00–18:00" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">
-    <div>
-      <a class="logo-name" href="index.html">Авто<span>•</span>Майстер</a>
-      <div class="logo-tagline">Автосервіс</div>
-    </div>
-  </div>
-
-  <div class="lang-switcher">
-    <a href="index.html" class="active">UA</a>
-    <a href="index.de.html">DE</a>
-  </div>
-
-  <div class="header-contact">
-    <div>Пн–Сб, 09:00–18:00</div>
-    <a href="tel:+380661234567">+38 (066) 123-45-67</a>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1 class="hero-headline">
-    Запис<br>на <span class="accent">сервіс</span>
-  </h1>
-  <div class="hero-meta">
-    <div class="hero-badge">Онлайн-запис</div>
-    <div class="hero-sub">Підтвердження на пошту</div>
-  </div>
-</section>
-
-<!-- WIZARD STEPS -->
-<nav class="wizard-steps" aria-label="Кроки запису">
-  <div class="step active" id="nav-step-1">
-    <div class="step-num">1</div>
-    <span class="step-label">Послуга</span>
-  </div>
-  <div class="step" id="nav-step-2">
-    <div class="step-num">2</div>
-    <span class="step-label">Дата і час</span>
-  </div>
-  <div class="step" id="nav-step-3">
-    <div class="step-num">3</div>
-    <span class="step-label">Ваші дані</span>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<main class="main">
-
-  <!-- STEP 1 -->
-  <div class="wizard-panel" id="step-1">
-    <div class="section-label">Оберіть послугу</div>
-    <div class="services-grid" id="services-grid"></div>
-    <div class="btn-row" style="border-top:none; justify-content:flex-end; margin-top:24px;">
-      <button class="btn-next" id="btn-next-1">Далі</button>
-    </div>
-  </div>
-
-  <!-- STEP 2 -->
-  <div class="wizard-panel hidden" id="step-2">
-    <div class="section-label">Оберіть дату</div>
-    <div class="calendar-section">
-      <div id="calendar-container"></div>
-    </div>
-    <div class="section-label" style="margin-top:32px;">Доступний час</div>
-    <div id="time-slots"></div>
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-2">Назад</button>
-      <button class="btn-next" id="btn-next-2">Далі</button>
-    </div>
-  </div>
-
-  <!-- STEP 3 -->
-  <div class="wizard-panel hidden" id="step-3">
-    <div class="section-label">Ваші дані</div>
-
-    <div id="booking-summary" class="booking-summary"></div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-name">Ім'я *</label>
-      <input class="form-input" id="field-name" type="text" placeholder="Іван Петренко" autocomplete="name" />
-      <div class="form-error" id="error-name"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-phone">Телефон *</label>
-      <input class="form-input" id="field-phone" type="tel" placeholder="+38 (0__) ___-__-__" autocomplete="tel" />
-      <div class="form-error" id="error-phone"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-email">Email <span style="color:var(--text-muted);font-size:11px;">(необов'язково)</span></label>
-      <input class="form-input" id="field-email" type="email" placeholder="ivan@gmail.com" autocomplete="email" />
-      <div class="form-error" id="error-email"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="field-comment">Марка авто / коментар</label>
-      <input class="form-input" id="field-comment" type="text" placeholder="Toyota Camry 2019, бензин" />
-    </div>
-
-    <div class="btn-row">
-      <button class="btn-back" id="btn-back-3">Назад</button>
-      <button class="btn-next" id="btn-submit">Підтвердити запис</button>
-    </div>
-  </div>
-
-  <!-- SUCCESS -->
-  <div class="wizard-panel hidden" id="step-success">
-    <div class="success-screen">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6"/></svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авто•Майстер — Запис на сервіс</title>
+    <meta
+      name="description"
+      content="Онлайн-запис на автосервіс. Заміна масла, діагностика, гальма, шини. Пн–Сб 09:00–18:00"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">
+        <div>
+          <a class="logo-name" href="index.html">Авто<span>•</span>Майстер</a>
+          <div class="logo-tagline">Автосервіс</div>
+        </div>
       </div>
-      <h2 class="success-title">Запис прийнято!</h2>
-      <p class="success-text">
-        Ваш запис успішно оформлено.<br>
-        Підтвердження надіслано на вашу пошту.
-      </p>
-      <div class="success-detail booking-summary"></div>
-      <a class="btn-next hidden cal-link" href="#" target="_blank" rel="noopener"
-         style="display:inline-flex; margin-bottom:16px; text-decoration:none;">
-        Додати в Cal.com
-      </a>
-      <br>
-      <button class="btn-restart" id="btn-restart">Новий запис</button>
-    </div>
-  </div>
 
-</main>
+      <div class="lang-switcher">
+        <a href="index.html" class="active">UA</a>
+        <a href="index.de.html">DE</a>
+      </div>
 
-<!-- DATA: Services (Ukrainian) -->
-<script>
-window.SERVICES = [
-  {
-    id: 'oil',
-    name: 'Заміна масла та фільтрів',
-    desc: 'Моторна олива + масляний, повітряний, салонний фільтри. Експрес-заміна без черги.',
-    duration: '30 хв',
-    price: '1 500 грн',
-  },
-  {
-    id: 'suspension',
-    name: 'Діагностика ходової',
-    desc: 'Повна перевірка підвіски, рульового керування та гальмівної системи на підйомнику.',
-    duration: '45 хв',
-    price: '800 грн',
-  },
-  {
-    id: 'diagnostic',
-    name: 'Комп\'ютерна діагностика',
-    desc: 'Зчитуємо помилки з усіх блоків керування, розшифровуємо та пояснюємо результат.',
-    duration: '30 хв',
-    price: '600 грн',
-  },
-  {
-    id: 'brakes',
-    name: 'Заміна гальмівних колодок',
-    desc: 'Передні або задні колодки. Включає прокачування гальм і перевірку супортів.',
-    duration: '60 хв',
-    price: '2 200 грн',
-  },
-  {
-    id: 'tires',
-    name: 'Сезонна заміна гуми',
-    desc: 'Перевзуваємо, балансуємо та перевіряємо тиск. Зберігання шин на складі — опційно.',
-    duration: '40 хв',
-    price: '1 200 грн',
-  },
-  {
-    id: 'maintenance',
-    name: 'ТО за регламентом',
-    desc: 'Повне технічне обслуговування згідно з регламентом виробника вашого автомобіля.',
-    duration: '90 хв',
-    price: 'від 4 500 грн',
-  },
-];
+      <div class="header-contact">
+        <div>Пн–Сб, 09:00–18:00</div>
+        <a href="tel:+380661234567">+38 (066) 123-45-67</a>
+      </div>
+    </header>
 
-window.STRINGS = {
-  selectService: 'Оберіть послугу',
-  selectDateTime: 'Оберіть дату та час',
-  selectDateFirst: 'Спочатку оберіть дату',
-  yourBooking: 'Ваше замовлення',
-  service: 'Послуга',
-  dateLabel: 'Дата',
-  timeLabel: 'Час',
-  duration: 'Тривалість',
-  price: 'Вартість',
-  nameLabel: 'Ім\'я',
-  sending: 'Надсилання',
-  submit: 'Підтвердити запис',
-  errorRequired: 'Обов\'язкове поле',
-  errorPhone: 'Введіть коректний номер',
-  errorEmail: 'Некоректний email',
-  errorGeneral: 'Помилка. Спробуйте ще раз.',
-  months: ['Січень','Лютий','Березень','Квітень','Травень','Червень',
-           'Липень','Серпень','Вересень','Жовтень','Листопад','Грудень'],
-  days: ['Пн','Вт','Ср','Чт','Пт','Сб','Нд'],
-};
-</script>
-<script src="js/main.js"></script>
-</body>
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="hero-headline">
+        Запис<br />на <span class="accent">сервіс</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-badge">Онлайн-запис</div>
+        <div class="hero-sub">Підтвердження на пошту</div>
+      </div>
+    </section>
+
+    <!-- WIZARD STEPS -->
+    <nav class="wizard-steps" aria-label="Кроки запису">
+      <div class="step active" id="nav-step-1">
+        <div class="step-num">1</div>
+        <span class="step-label">Послуга</span>
+      </div>
+      <div class="step" id="nav-step-2">
+        <div class="step-num">2</div>
+        <span class="step-label">Дата і час</span>
+      </div>
+      <div class="step" id="nav-step-3">
+        <div class="step-num">3</div>
+        <span class="step-label">Ваші дані</span>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- STEP 1 -->
+      <div class="wizard-panel" id="step-1">
+        <div class="section-label">Оберіть послугу</div>
+        <div class="services-grid" id="services-grid"></div>
+        <div
+          class="btn-row"
+          style="border-top: none; justify-content: flex-end; margin-top: 24px"
+        >
+          <button class="btn-next" id="btn-next-1">Далі</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="wizard-panel hidden" id="step-2">
+        <div class="section-label">Оберіть дату</div>
+        <div class="calendar-section">
+          <div id="calendar-container"></div>
+        </div>
+        <div class="section-label" style="margin-top: 32px">Доступний час</div>
+        <div id="time-slots"></div>
+        <div class="btn-row">
+          <button class="btn-back" id="btn-back-2">Назад</button>
+          <button class="btn-next" id="btn-next-2">Далі</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="wizard-panel hidden" id="step-3">
+        <div class="section-label">Ваші дані</div>
+
+        <div id="booking-summary" class="booking-summary"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-name">Ім'я *</label>
+          <input
+            class="form-input"
+            id="field-name"
+            type="text"
+            placeholder="Іван Петренко"
+            autocomplete="name"
+          />
+          <div class="form-error" id="error-name"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-phone">Телефон *</label>
+          <input
+            class="form-input"
+            id="field-phone"
+            type="tel"
+            placeholder="+38 (0__) ___-__-__"
+            autocomplete="tel"
+          />
+          <div class="form-error" id="error-phone"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-email"
+            >Email
+            <span style="color: var(--text-muted); font-size: 11px"
+              >(необов'язково)</span
+            ></label
+          >
+          <input
+            class="form-input"
+            id="field-email"
+            type="email"
+            placeholder="ivan@gmail.com"
+            autocomplete="email"
+          />
+          <div class="form-error" id="error-email"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="field-comment"
+            >Марка авто / коментар</label
+          >
+          <input
+            class="form-input"
+            id="field-comment"
+            type="text"
+            placeholder="Toyota Camry 2019, бензин"
+          />
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" id="btn-back-3">Назад</button>
+          <button class="btn-next" id="btn-submit">Підтвердити запис</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="wizard-panel hidden" id="step-success">
+        <div class="success-screen">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6" /></svg>
+          </div>
+          <h2 class="success-title">Запис прийнято!</h2>
+          <p class="success-text">
+            Ваш запис успішно оформлено.<br />
+            Підтвердження надіслано на вашу пошту.
+          </p>
+          <div class="success-detail booking-summary"></div>
+          <button class="btn-restart" id="btn-restart">Новий запис</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- DATA: Services (Ukrainian) -->
+    <script>
+      window.SERVICES = [
+        {
+          id: "oil",
+          name: "Заміна масла та фільтрів",
+          desc: "Моторна олива + масляний, повітряний, салонний фільтри. Експрес-заміна без черги.",
+          duration: "30 хв",
+          price: "1 500 грн",
+        },
+        {
+          id: "suspension",
+          name: "Діагностика ходової",
+          desc: "Повна перевірка підвіски, рульового керування та гальмівної системи на підйомнику.",
+          duration: "45 хв",
+          price: "800 грн",
+        },
+        {
+          id: "diagnostic",
+          name: "Комп'ютерна діагностика",
+          desc: "Зчитуємо помилки з усіх блоків керування, розшифровуємо та пояснюємо результат.",
+          duration: "30 хв",
+          price: "600 грн",
+        },
+        {
+          id: "brakes",
+          name: "Заміна гальмівних колодок",
+          desc: "Передні або задні колодки. Включає прокачування гальм і перевірку супортів.",
+          duration: "60 хв",
+          price: "2 200 грн",
+        },
+        {
+          id: "tires",
+          name: "Сезонна заміна гуми",
+          desc: "Перевзуваємо, балансуємо та перевіряємо тиск. Зберігання шин на складі — опційно.",
+          duration: "40 хв",
+          price: "1 200 грн",
+        },
+        {
+          id: "maintenance",
+          name: "ТО за регламентом",
+          desc: "Повне технічне обслуговування згідно з регламентом виробника вашого автомобіля.",
+          duration: "90 хв",
+          price: "від 4 500 грн",
+        },
+      ];
+
+      window.STRINGS = {
+        selectService: "Оберіть послугу",
+        selectDateTime: "Оберіть дату та час",
+        selectDateFirst: "Спочатку оберіть дату",
+        yourBooking: "Ваше замовлення",
+        service: "Послуга",
+        dateLabel: "Дата",
+        timeLabel: "Час",
+        duration: "Тривалість",
+        price: "Вартість",
+        nameLabel: "Ім'я",
+        sending: "Надсилання",
+        submit: "Підтвердити запис",
+        errorRequired: "Обов'язкове поле",
+        errorPhone: "Введіть коректний номер",
+        errorEmail: "Некоректний email",
+        errorGeneral: "Помилка. Спробуйте ще раз.",
+        months: [
+          "Січень",
+          "Лютий",
+          "Березень",
+          "Квітень",
+          "Травень",
+          "Червень",
+          "Липень",
+          "Серпень",
+          "Вересень",
+          "Жовтень",
+          "Листопад",
+          "Грудень",
+        ],
+        days: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+      };
+    </script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
