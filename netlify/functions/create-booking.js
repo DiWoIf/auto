@@ -1,6 +1,5 @@
 // netlify/functions/create-booking.js
 // Cal.com API v2 — creates a booking
-// Docs: https://cal.com/docs/api-reference/v2/bookings/create-a-booking
 
 const CAL_API_KEY = process.env.CAL_API_KEY;
 const CAL_EVENT_TYPE_ID = 6136770; // Запис на сервіс
@@ -27,9 +26,7 @@ exports.handler = async (event) => {
   if (!date || !time || !name || !phone) {
     return {
       statusCode: 400,
-      body: JSON.stringify({
-        error: "Missing required fields: date, time, name, phone",
-      }),
+      body: JSON.stringify({ error: "Missing required fields" }),
     };
   }
 
@@ -49,7 +46,6 @@ exports.handler = async (event) => {
       service: serviceName || serviceId || "",
       comment: comment || "",
     },
-    notes: [serviceName, comment].filter(Boolean).join(" — ") || undefined,
   };
 
   try {
@@ -70,8 +66,7 @@ exports.handler = async (event) => {
       return {
         statusCode: res.status,
         body: JSON.stringify({
-          error:
-            data?.error?.message || data?.message || "Cal.com booking failed",
+          error: data?.error?.message || "Cal.com booking failed",
           detail: data,
         }),
       };
