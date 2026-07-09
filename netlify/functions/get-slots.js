@@ -47,6 +47,7 @@ exports.handler = async (event) => {
     }
 
     // Cal.com returns { data: { slots: { "2026-07-01": [ { time: "2026-07-01T09:00:00.000Z" }, ... ] } } }
+    console.log("Cal.com response:", JSON.stringify(data));
     const slotsForDate = data?.data?.slots?.[date] || [];
     const availableTimes = slotsForDate.map((slot) => {
       const d = new Date(slot.time);
