@@ -51,9 +51,12 @@ exports.handler = async (event) => {
     const slotsForDate = data?.data?.slots?.[date] || [];
     const availableTimes = slotsForDate.map((slot) => {
       const d = new Date(slot.time);
-      const h = String(d.getUTCHours()).padStart(2, "0");
-      const m = String(d.getUTCMinutes()).padStart(2, "0");
-      return `${h}:${m}`;
+      const localTime = d.toLocaleTimeString("de-DE", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Europe/Berlin",
+      });
+      return localTime; // returns "09:00"
     });
 
     return {
